@@ -1,7 +1,7 @@
 {
   "name": "phaser-react-ui",
   "description": "React interface render for Phaser engine",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "keywords": [
     "phaser",
     "interface",
@@ -30,13 +30,13 @@
     "babel-loader": "9.1.2",
     "eslint": "8.44.0",
     "eslint-config-neki": "1.3.0",
+    "phaser": "3.60.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
     "ts-loader": "9.4.2",
     "typescript": "5.0.2",
     "webpack": "5.76.3",
-    "webpack-cli": "5.0.1",
-    "phaser": "3.60.0",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "webpack-cli": "5.0.1"
   },
   "repository": {
     "type": "git",
