@@ -22,36 +22,20 @@ npm i phaser-react-ui
 ## Interface integration
 #### Add interface to scene
 ```ts
-new Interface(
+const ui = new Interface(
   scene: Phaser.Scene, 
   component: React.FC, 
   props?: object
 );
-```
-```ts
-class YourScene extends Phaser.Scene {
-  create() {
-    const ui = new Interface(this, Component, {
-      foo: 1,
-      bar: 2,
-    });
 
-    console.log(ui.container); // HTMLDivElement
-  }
-}
+console.log(ui.container); // HTMLDivElement
 ```
 
 #### Interface events
 ```ts
-class YourScene extends Phaser.Scene {
-  create() {
-    const ui = new Interface(this, Component);
-
-    this.events.on(Phaser.Interface.Events.MOUNT, () => {
-      console.log('component mounted');
-    });
-  }
-}
+scene.events.on(Phaser.Interface.Events.MOUNT, () => {
+  console.log('component mounted');
+});
 ```
 
 #### Toggle interface interactive
@@ -65,12 +49,15 @@ ui.setInteractive(state: boolean);
 ```ts
 ui.destroy();
 ```
+* When scene is closed, the interface is destroyed automatically
 
 .
 
 ## Components
 #### Get game in component
 ```ts
+import { useGame } from 'phaser-react-ui';
+
 const Component: React.FC = () => {
   const game = useGame();
 };
@@ -78,6 +65,8 @@ const Component: React.FC = () => {
 
 #### Get scene in component
 ```ts
+import { useCurrentScene, useScene } from 'phaser-react-ui';
+
 const Component: React.FC = () => {
   // Get scene in which interface was created
   const scene = useCurrentScene();
@@ -88,6 +77,8 @@ const Component: React.FC = () => {
 
 #### Subscribe to scene update
 ```ts
+import { useCurrentScene, useSceneUpdate } from 'phaser-react-ui';
+
 const Component: React.FC = () => {
   const scene = useCurrentScene();
 
@@ -97,8 +88,28 @@ const Component: React.FC = () => {
 };
 ```
 
+#### Position relative to camera
+```ts
+import { TranslateToCamera } from 'phaser-react-ui';
+
+const Component: React.FC = () => {
+  const position = useMemo(() => ({ 
+    x: 100, 
+    y: 200,
+  }), []);
+
+  return (
+    <TranslateToCamera position={position}>
+      ...
+    </TranslateToCamera>
+  );
+};
+```
+
 #### Safe rerender utils
 ```ts
+import { useCurrentScene, useSceneUpdate, getModifiedObject } from 'phaser-react-ui';
+
 const Component: React.FC = () => {
   const scene = useCurrentScene();
   const [data, setData] = useState({});
@@ -119,6 +130,8 @@ const Component: React.FC = () => {
 
 #### Add interface to scene
 ```ts
+import { Interface } from 'phaser-react-ui';
+
 class Screen extends Phaser.Scene {
   create() {
     new Interface(this, ScreenUI, { 
@@ -148,6 +161,8 @@ ScreenUI.displayName = 'ScreenUI';
 
 #### Create interface component
 ```ts
+import { useScene, useSceneUpdate } from 'phaser-react-ui';
+
 const PlayerHealth: React.FC = () => {
   const world = useScene('world');
   const [health, setHealth] = useState(0);
