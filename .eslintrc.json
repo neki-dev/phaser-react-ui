@@ -1,0 +1,7 @@
+{
+  "extends": ["neki/ts-react"],
+  "rules": {
+    "react/function-component-definition": "off",
+    "no-console": "off"
+  }
+}
