@@ -1,6 +1,7 @@
 {
   "extends": ["neki/ts-react"],
   "rules": {
+    "import/no-extraneous-dependencies": "off",
     "react/function-component-definition": "off",
     "no-console": "off"
   }
