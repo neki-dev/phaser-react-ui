@@ -1,6 +1,6 @@
 ## ⚡ Phaser React UI
 [![Npm package version](https://badgen.net/npm/v/phaser-react-ui)](https://npmjs.com/package/phaser-react-ui)
-[![Small size](https://img.badgesize.io/neki-dev/phaser-react-ui/master/dist/index.js)](https://github.com/neki-dev/phaser-react-ui/blob/master/dist/index.js)
+[![Small size](https://img.badgesize.io/neki-dev/phaser-react-ui/main/dist/index.js)](https://github.com/neki-dev/phaser-react-ui/blob/main/dist/index.js)
 [![Building](https://github.com/neki-dev/phaser-react-ui/actions/workflows/build.yml/badge.svg)](https://github.com/neki-dev/phaser-react-ui/actions/workflows/build.yml)
 
 Allows you to render game interface using React, connecting it with Phaser through events and context.
