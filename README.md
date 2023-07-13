@@ -3,7 +3,7 @@
 [![Small size](https://img.badgesize.io/neki-dev/phaser-react-ui/main/dist/index.js)](https://github.com/neki-dev/phaser-react-ui/blob/main/dist/index.js)
 [![Building](https://github.com/neki-dev/phaser-react-ui/actions/workflows/build.yml/badge.svg)](https://github.com/neki-dev/phaser-react-ui/actions/workflows/build.yml)
 
-Allows you to render game interface using React, connecting it with Phaser through events and context.
+Allows you to render relative game interface using React, connecting it with Phaser through events and context.
 
 For each scene can be create one interface instance, which is container for all components.
 
