@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { useCurrentScene } from './use-current-scene';
 import { useSceneUpdate } from './use-scene-update';
 
@@ -11,10 +11,6 @@ export function useRelativePosition<T extends HTMLElement>({ x, y }: Props) {
   const scene = useCurrentScene();
 
   const refElement = useRef<T>(null);
-
-  useEffect(() => {
-    refElement.current.style.position = 'absolute';
-  }, []);
 
   useSceneUpdate(scene, () => {
     const camera = scene.cameras.main;

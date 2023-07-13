@@ -3,6 +3,7 @@
   "rules": {
     "import/no-extraneous-dependencies": "off",
     "react/function-component-definition": "off",
+    "react/require-default-props": "off",
     "no-console": "off"
   }
 }

@@ -119,7 +119,25 @@ const Component: React.FC = () => {
 
 .
 
-## Example
+## Components
+
+#### Position relative to camera
+```ts
+<RelativePosition x={number} y={number}>
+  ...
+</RelativePosition>
+```
+
+#### Scale relative to canvas size
+```ts
+<RelativeScale target={number} min={number?} max={number?}>
+  ...
+</RelativeScale>
+```
+
+.
+
+## Full example
 
 #### Add interface to scene
 ```ts
@@ -143,7 +161,7 @@ type Props = {
 }
 
 const ScreenUI: React.FC<Props> = ({ theme }) => {
-  const ref = useRelativeScale({
+  const ref = useRelativeScale<HTMLDivElement>({
     target: 1280,
     min: 0.6,
     max: 1.2,
