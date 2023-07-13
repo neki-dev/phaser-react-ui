@@ -53,7 +53,7 @@ ui.destroy()
 
 .
 
-## Component hooks
+## Hooks
 #### Get game in component
 ```ts
 useGame(): Phaser.Game
