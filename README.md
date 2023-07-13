@@ -40,76 +40,69 @@ scene.events.on(Phaser.Interface.Events.MOUNT, () => {
 
 #### Toggle interface interactive
 ```ts
-ui.setInteractive(state: boolean);
+ui.setInteractive(state: boolean)
 ```
 * Default: `true`
 * You can toggle interactive for certain interface elements by CSS-property `pointer-events`
 
 #### Remove interface from scene
 ```ts
-ui.destroy();
+ui.destroy()
 ```
 * When scene is closed, the interface is destroyed automatically
 
 .
 
-## Components
+## Component hooks
 #### Get game in component
 ```ts
-import { useGame } from 'phaser-react-ui';
-
-const Component: React.FC = () => {
-  const game = useGame();
-};
+useGame(): Phaser.Game
 ```
 
 #### Get scene in component
+  * Get scene in which interface was created
 ```ts
-import { useCurrentScene, useScene } from 'phaser-react-ui';
-
-const Component: React.FC = () => {
-  // Get scene in which interface was created
-  const scene = useCurrentScene();
-  // Or get scene by key
-  const scene = useScene('key');
-};
+useCurrentScene(): Phaser.Game
+```
+  * Get scene by key
+```ts
+useScene(key: string): Phaser.Game
 ```
 
 #### Subscribe to scene update
 ```ts
-import { useCurrentScene, useSceneUpdate } from 'phaser-react-ui';
-
-const Component: React.FC = () => {
-  const scene = useCurrentScene();
-
-  useSceneUpdate(scene, () => {
-    // Callback
-  }, []);
-};
+useSceneUpdate(
+  scene: Phaser.Scene, 
+  callback: () => void, 
+  depends?: any[]
+)
 ```
 
 #### Position relative to camera
 ```ts
-import { TranslateToCamera } from 'phaser-react-ui';
+useRelativePosition(position: { 
+  x: number, 
+  y: number
+}): React.MutableRefObject<HTMLElement>
+```
 
-const Component: React.FC = () => {
-  const position = useMemo(() => ({ 
-    x: 100, 
-    y: 200,
-  }), []);
-
-  return (
-    <TranslateToCamera position={position}>
-      ...
-    </TranslateToCamera>
-  );
-};
+#### Scale relative to canvas size
+```ts
+useRelativeScale(params: { 
+  target: number, 
+  min?: number,
+  max?: number
+}): React.MutableRefObject<HTMLElement>
 ```
 
 #### Safe rerender utils
 ```ts
-import { useCurrentScene, useSceneUpdate, getModifiedObject } from 'phaser-react-ui';
-
+getModifiedObject(curr: T, next: T): T 
+```
+```ts
+getModifiedArray(curr: T[], next: T[], keys: (keyof T)[]): T[]
+```
+```ts
 const Component: React.FC = () => {
   const scene = useCurrentScene();
   const [data, setData] = useState({});
@@ -143,13 +136,21 @@ class Screen extends Phaser.Scene {
 
 #### Create interface container of components
 ```ts
+import { useRelativeScale } from 'phaser-react-ui';
+
 type Props = {
   theme: string
 }
 
 const ScreenUI: React.FC<Props> = ({ theme }) => {
+  const ref = useRelativeScale({
+    target: 1280,
+    min: 0.6,
+    max: 1.2,
+  });
+
   return (
-    <div className={`container ${theme}`}>
+    <div ref={ref} className={`container ${theme}`}>
       <PlayerHealth />
       // ...
     </div>
