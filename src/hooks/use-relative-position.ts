@@ -7,10 +7,10 @@ type Props = {
   y: number
 };
 
-export function useRelativePosition({ x, y }: Props) {
+export function useRelativePosition<T extends HTMLElement>({ x, y }: Props) {
   const scene = useCurrentScene();
 
-  const refElement = useRef<HTMLElement>(null);
+  const refElement = useRef<T>(null);
 
   useEffect(() => {
     refElement.current.style.position = 'absolute';

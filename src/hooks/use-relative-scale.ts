@@ -7,10 +7,10 @@ type Props = {
   max?: number
 };
 
-export function useRelativeScale({ target, min, max }: Props) {
+export function useRelativeScale<T extends HTMLElement>({ target, min, max }: Props) {
   const game = useGame();
 
-  const refElement = useRef<HTMLElement>(null);
+  const refElement = useRef<T>(null);
 
   const onResize = useCallback(() => {
     const container = game.canvas.parentElement;
