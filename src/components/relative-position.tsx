@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react';
 import { useRelativePosition } from '../hooks';
+import { RelativePositionProps } from '../types/relative-position';
 
-type Props = {
-  x: number
-  y: number
+type Props = RelativePositionProps & {
   children: React.ReactNode
 };
 

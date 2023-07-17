@@ -1,13 +1,13 @@
 import { useCallback, useEffect, useRef } from 'react';
 import { useGame } from './use-game';
+import { RelativeScaleProps } from '../types/relative-scale';
 
-type Props = {
-  target: number
-  min?: number
-  max?: number
-};
-
-export function useRelativeScale<T extends HTMLElement>({ target, min, max }: Props) {
+export function useRelativeScale<T extends HTMLElement>({
+  target,
+  min,
+  max,
+  round,
+}: RelativeScaleProps) {
   const game = useGame();
 
   const refElement = useRef<T>(null);
@@ -24,9 +24,13 @@ export function useRelativeScale<T extends HTMLElement>({ target, min, max }: Pr
       zoom = Math.max(zoom, min);
     }
 
+    if (round) {
+      zoom = Math.round(zoom * 10) / 10;
+    }
+
     // @ts-ignore
     refElement.current.style.zoom = zoom;
-  }, [target, min, max]);
+  }, [target, min, max, round]);
 
   useEffect(() => {
     onResize();

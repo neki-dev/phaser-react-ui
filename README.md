@@ -3,11 +3,11 @@
 [![Small size](https://img.badgesize.io/neki-dev/phaser-react-ui/main/dist/index.js)](https://github.com/neki-dev/phaser-react-ui/blob/main/dist/index.js)
 [![Building](https://github.com/neki-dev/phaser-react-ui/actions/workflows/build.yml/badge.svg)](https://github.com/neki-dev/phaser-react-ui/actions/workflows/build.yml)
 
-Allows you to render relative game interface using React, connecting it with Phaser through events and context.
+Library for render relative game interface using React, connecting it with Phaser through events and context.
+
+Use special hooks for access to game and scenes.
 
 For each scene can be create one interface instance, which is container for all components.
-
-Use special hooks to access game data from components.
 
 .
 
@@ -91,7 +91,8 @@ useRelativePosition(position: {
 useRelativeScale(params: { 
   target: number, 
   min?: number,
-  max?: number
+  max?: number,
+  round?: boolean
 }): React.MutableRefObject<HTMLElement>
 ```
 
@@ -130,7 +131,7 @@ const Component: React.FC = () => {
 
 #### Scale relative to canvas size
 ```ts
-<RelativeScale target={number} min={number?} max={number?}>
+<RelativeScale target={number} min={number?} max={number?} round={boolean?}>
   ...
 </RelativeScale>
 ```
@@ -138,45 +139,6 @@ const Component: React.FC = () => {
 .
 
 ## Full example
-
-#### Add interface to scene
-```ts
-import { Interface } from 'phaser-react-ui';
-
-class Screen extends Phaser.Scene {
-  create() {
-    new Interface(this, ScreenUI, { 
-      theme: 'dark'
-    });
-  }
-}
-```
-
-#### Create interface container of components
-```ts
-import { useRelativeScale } from 'phaser-react-ui';
-
-type Props = {
-  theme: string
-}
-
-const ScreenUI: React.FC<Props> = ({ theme }) => {
-  const ref = useRelativeScale<HTMLDivElement>({
-    target: 1280,
-    min: 0.6,
-    max: 1.2,
-  });
-
-  return (
-    <div ref={ref} className={`container ${theme}`}>
-      <PlayerHealth />
-      // ...
-    </div>
-  );
-};
-
-ScreenUI.displayName = 'ScreenUI';
-```
 
 #### Create interface component
 ```ts
@@ -196,4 +158,41 @@ const PlayerHealth: React.FC = () => {
     </div>
   );
 };
+```
+
+#### Create components container
+```ts
+import { useRelativeScale } from 'phaser-react-ui';
+import { PlayerHealth } from './PlayerHealth';
+
+const ScreenUI: React.FC<Props> = () => {
+  const ref = useRelativeScale<HTMLDivElement>({
+    target: 1280,
+    min: 0.6,
+    max: 1.2,
+  });
+
+  return (
+    <div ref={ref} className='container'>
+      <PlayerHealth />
+      ...
+    </div>
+  );
+};
+
+ScreenUI.displayName = 'ScreenUI';
+```
+
+#### Add interface to scene
+```ts
+import { Interface } from 'phaser-react-ui';
+import { ScreenUI } from './ScreenUI';
+
+class Screen extends Phaser.Scene {
+  private ui: Interface;
+
+  create() {
+    this.ui = new Interface(this, ScreenUI);
+  }
+}
 ```

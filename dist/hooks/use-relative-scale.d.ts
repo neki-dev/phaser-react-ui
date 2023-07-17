@@ -1,8 +1,3 @@
 /// <reference types="react" />
-type Props = {
-    target: number;
-    min?: number;
-    max?: number;
-};
-export declare function useRelativeScale<T extends HTMLElement>({ target, min, max }: Props): import("react").MutableRefObject<T>;
-export {};
+import { RelativeScaleProps } from '../types/relative-scale';
+export declare function useRelativeScale<T extends HTMLElement>({ target, min, max, round, }: RelativeScaleProps): import("react").MutableRefObject<T>;

@@ -1,7 +1,6 @@
 import React from 'react';
-type Props = {
-    x: number;
-    y: number;
+import { RelativePositionProps } from '../types/relative-position';
+type Props = RelativePositionProps & {
     children: React.ReactNode;
 };
 export declare const RelativePosition: React.FC<Props>;
