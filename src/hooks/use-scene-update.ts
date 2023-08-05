@@ -1,22 +1,14 @@
 import type Phaser from 'phaser';
-import { useCallback, useEffect } from 'react';
+import { useEffect } from 'react';
 
 export function useSceneUpdate(scene: Phaser.Scene, callback: () => void, depends: any[] = []) {
-  const safeCallback = useCallback(() => {
-    try {
-      callback();
-    } catch (error) {
-      console.error(error);
-    }
-  }, depends);
-
   useEffect(() => {
-    safeCallback();
+    callback();
 
-    scene.events.on('update', safeCallback);
+    scene.events.on('update', callback);
 
     return () => {
-      scene.events.off('update', safeCallback);
+      scene.events.off('update', callback);
     };
-  }, [safeCallback]);
+  }, depends);
 }
