@@ -13,7 +13,8 @@ export class Interface<T = {}> {
 
   constructor(scene: Phaser.Scene, Component: React.FC<T>, props?: T) {
     if (scene.interface) {
-      throw Error('Scene already have interface');
+      console.warn('Scene already had an existing interface');
+      scene.interface.destroy();
     }
 
     this.container = document.createElement('div');
