@@ -13,6 +13,10 @@ export function useRelativeScale<T extends HTMLElement>({
   const refElement = useRef<T>(null);
 
   const onResize = useCallback(() => {
+    if (!refElement.current) {
+      return;
+    }
+
     const container = game.canvas.parentElement;
     let zoom = container.clientWidth / target;
 

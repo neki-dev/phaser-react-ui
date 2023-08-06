@@ -14,6 +14,10 @@ export function useRelativePosition<T extends HTMLElement>({
   useSceneUpdate(
     scene,
     () => {
+      if (!refElement.current) {
+        return;
+      }
+
       const camera = scene.cameras.main;
       const rx = Math.round((x - camera.worldView.x) * camera.zoom);
       const ry = Math.round((y - camera.worldView.y) * camera.zoom);
