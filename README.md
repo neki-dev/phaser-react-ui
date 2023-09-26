@@ -99,7 +99,7 @@ useRelativeScale(params: {
 #### Get source texture image
 ```ts
 useTexture(params: {
-  key: string, 
+  name: string, 
   frame?: string | number
 }): HTMLImageElement
 ```
@@ -124,7 +124,7 @@ useTexture(params: {
 
 #### Render texture image
 ```ts
-<Texture key={string} frame={string? | number?} />
+<Texture name={string} frame={string? | number?} />
 ```
 
 .

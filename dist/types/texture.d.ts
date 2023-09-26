@@ -1,4 +1,4 @@
 export type TextureProps = {
-    key: string;
+    name: string;
     frame?: string | number;
 };
