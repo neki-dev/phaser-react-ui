@@ -96,6 +96,32 @@ useRelativeScale(params: {
 }): React.MutableRefObject<HTMLElement>
 ```
 
+#### Get source texture image
+```ts
+useTexture(key: string): HTMLImageElement
+```
+
+.
+
+## Components
+
+#### Position relative to camera
+```ts
+<RelativePosition x={number} y={number}>
+  ...
+</RelativePosition>
+```
+
+#### Scale relative to canvas size
+```ts
+<RelativeScale target={number} min={number?} max={number?} round={boolean?}>
+  ...
+</RelativeScale>
+```
+
+.
+
+## Utils
 #### Safe rerender utils
 ```ts
 getModifiedObject(curr: T, next: T): T 
@@ -116,24 +142,6 @@ const Component: React.FC = () => {
     ));
   }, []);
 };
-```
-
-.
-
-## Components
-
-#### Position relative to camera
-```ts
-<RelativePosition x={number} y={number}>
-  ...
-</RelativePosition>
-```
-
-#### Scale relative to canvas size
-```ts
-<RelativeScale target={number} min={number?} max={number?} round={boolean?}>
-  ...
-</RelativeScale>
 ```
 
 .
