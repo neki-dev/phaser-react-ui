@@ -98,7 +98,10 @@ useRelativeScale(params: {
 
 #### Get source texture image
 ```ts
-useTexture(key: string): HTMLImageElement
+useTexture(params: {
+  key: string, 
+  frame?: string | number
+}): HTMLImageElement
 ```
 
 .
@@ -117,6 +120,11 @@ useTexture(key: string): HTMLImageElement
 <RelativeScale target={number} min={number?} max={number?} round={boolean?}>
   ...
 </RelativeScale>
+```
+
+#### Render texture image
+```ts
+<Texture key={string} frame={string? | number?} />
 ```
 
 .

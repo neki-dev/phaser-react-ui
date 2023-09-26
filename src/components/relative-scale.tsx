@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useLayoutEffect } from 'react';
 import { useRelativeScale } from '../hooks';
 import { RelativeScaleProps } from '../types/relative-scale';
 
@@ -6,20 +6,12 @@ type Props = RelativeScaleProps & {
   children: React.ReactNode
 };
 
-export const RelativeScale: React.FC<Props> = ({
-  target, min, max, round, children,
-}) => {
-  const ref = useRelativeScale<HTMLDivElement>({
-    target, min, max, round,
-  });
+export const RelativeScale: React.FC<Props> = ({ children, ...props }) => {
+  const ref = useRelativeScale<HTMLDivElement>(props);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     ref.current.style.position = 'absolute';
   }, []);
 
-  return (
-    <div ref={ref}>
-      {children}
-    </div>
-  );
+  return <div ref={ref}>{children}</div>;
 };
