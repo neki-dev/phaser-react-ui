@@ -1,25 +1,25 @@
-import { useCallback, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export function useMatchMedia(
   query: string,
-  callback: (matched: boolean) => void,
 ) {
-  const onChange = useCallback(
-    (event: MediaQueryListEvent) => {
-      callback(event.matches);
-    },
-    [callback],
-  );
+  const [matched, setMatched] = useState(null);
+
+  const onChange = (event: MediaQueryListEvent) => {
+    setMatched(event.matches);
+  };
 
   useEffect(() => {
     const match = window.matchMedia(query);
 
-    callback(match.matches);
+    setMatched(match.matches);
 
     match.addEventListener('change', onChange);
 
     return () => {
       match.removeEventListener('change', onChange);
     };
-  }, [query, callback, onChange]);
+  }, [query]);
+
+  return matched;
 }

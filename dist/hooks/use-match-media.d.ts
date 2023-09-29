@@ -1,1 +1,1 @@
-export declare function useMatchMedia(query: string, callback: (matched: boolean) => void): void;
+export declare function useMatchMedia(query: string): any;

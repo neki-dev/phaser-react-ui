@@ -104,12 +104,11 @@ useTexture(params: {
 }): HTMLImageElement
 ```
 
-#### Catch media query result
+#### Get actual media query result
 ```ts
 useMatchMedia(
-  query: string,
-  callback: (matched: boolean) => void
-)
+  query: string
+): boolean
 ```
 
 .
