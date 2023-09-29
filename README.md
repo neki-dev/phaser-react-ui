@@ -104,6 +104,14 @@ useTexture(params: {
 }): HTMLImageElement
 ```
 
+#### Catch media query result
+```ts
+useMatchMedia(
+  query: string,
+  callback: (matched: boolean) => void
+)
+```
+
 .
 
 ## Components
