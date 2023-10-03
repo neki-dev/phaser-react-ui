@@ -111,6 +111,11 @@ useMatchMedia(
 ): boolean
 ```
 
+#### Check platform is mobile
+```ts
+useMobilePlatform(): boolean
+```
+
 .
 
 ## Components
