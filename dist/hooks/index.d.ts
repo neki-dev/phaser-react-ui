@@ -7,3 +7,4 @@ export * from './use-relative-scale';
 export * from './use-texture';
 export * from './use-match-media';
 export * from './use-mobile-platform';
+export * from './use-outside-click';

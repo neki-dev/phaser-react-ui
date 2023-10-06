@@ -1,7 +1,11 @@
 import type Phaser from 'phaser';
 import { useEffect } from 'react';
 
-export function useSceneUpdate(scene: Phaser.Scene, callback: () => void, depends: any[] = []) {
+export function useSceneUpdate(
+  scene: Phaser.Scene,
+  callback: () => void,
+  depends: any[],
+) {
   useEffect(() => {
     callback();
 

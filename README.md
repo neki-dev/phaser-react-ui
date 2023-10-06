@@ -74,7 +74,7 @@ useScene(key: string): Phaser.Game
 useSceneUpdate(
   scene: Phaser.Scene, 
   callback: () => void, 
-  depends?: any[]
+  depends: any[]
 )
 ```
 
@@ -114,6 +114,15 @@ useMatchMedia(
 #### Check platform is mobile
 ```ts
 useMobilePlatform(): boolean
+```
+
+#### Add click event outside element
+```ts
+useOutsideClick(
+  ref: React.RefObject,
+  callback: Function,
+  depends: any[]
+)
 ```
 
 .
