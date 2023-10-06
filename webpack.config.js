@@ -24,9 +24,9 @@ module.exports = {
     minimize: true,
   },
   externals: {
-    phaser: "/node_modules/phaser",
-    react: "/node_modules/react",
-    "react-dom": "/node_modules/react-dom",
-    "react-dom/client": "/node_modules/react-dom/client",
+    phaser: "phaser",
+    react: "react",
+    "react-dom": "react-dom",
+    "react-dom/client": "react-dom/client",
   },
 };
