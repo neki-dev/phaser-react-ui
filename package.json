@@ -1,7 +1,7 @@
 {
   "name": "phaser-react-ui",
   "description": "React interface render for Phaser engine",
-  "version": "1.9.1",
+  "version": "1.9.2",
   "keywords": [
     "phaser",
     "interface",

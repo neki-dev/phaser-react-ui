@@ -32,8 +32,7 @@ export function useRelativeScale<T extends HTMLElement>({
       zoom = Math.round(zoom * 10) / 10;
     }
 
-    // @ts-ignore
-    refElement.current.style.zoom = zoom;
+    refElement.current.style.transform = `scale(${zoom})`;
   }, [target, min, max, round]);
 
   useEffect(() => {
