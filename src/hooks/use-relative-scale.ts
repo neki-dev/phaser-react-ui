@@ -32,7 +32,18 @@ export function useRelativeScale<T extends HTMLElement>({
       zoom = Math.round(zoom * 10) / 10;
     }
 
+    refElement.current.style.removeProperty('transform');
+    refElement.current.style.removeProperty('transformOrigin');
+    refElement.current.style.removeProperty('width');
+    refElement.current.style.removeProperty('height');
+
+    const originalWidth = refElement.current.clientWidth;
+    const originalHeight = refElement.current.clientHeight;
+
     refElement.current.style.transform = `scale(${zoom})`;
+    refElement.current.style.transformOrigin = '0 0';
+    refElement.current.style.width = `${originalWidth / zoom}px`;
+    refElement.current.style.height = `${originalHeight / zoom}px`;
   }, [target, min, max, round]);
 
   useEffect(() => {
