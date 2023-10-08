@@ -153,10 +153,16 @@ useOutsideClick(
 ## Utils
 #### Safe rerender utils
 ```ts
-getModifiedObject(curr: T, next: T): T 
+ifModifiedObject(
+  newValue: T, 
+  keys?: (keyof T)[]
+): (currentValue: T) => T
 ```
 ```ts
-getModifiedArray(curr: T[], next: T[], keys: (keyof T)[]): T[]
+ifModifiedArray(
+  newValue: T[], 
+  keys?: (keyof T)[]
+): (currentValue: T[]) => T[]
 ```
 ```ts
 const Component: React.FC = () => {
@@ -165,10 +171,8 @@ const Component: React.FC = () => {
 
   useSceneUpdate(scene, () => {
     const newData = scene.getSomeData();
-    setList((currentData) => (
-      // Rerender only if newData is different by currentData
-      getModifiedObject(currentData, newData)
-    ));
+    // Rerender only if newData is different by data
+    setList(ifModifiedObject(newData))
   }, []);
 };
 ```
