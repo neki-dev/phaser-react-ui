@@ -1,11 +1,12 @@
 import React, { useRef, useLayoutEffect } from 'react';
 import { useTexture } from '../hooks';
-import { TextureProps } from '../types/texture';
 
-type Props = TextureProps;
+type Props = {
+  name: string
+};
 
-export const Texture: React.FC<Props> = (props) => {
-  const image = useTexture(props);
+export const Texture: React.FC<Props> = ({ name }) => {
+  const image = useTexture(name);
 
   const ref = useRef<HTMLDivElement>(null);
 
