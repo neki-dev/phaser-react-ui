@@ -23,9 +23,9 @@ export function useClick(
     let event: string;
 
     if (isMobile) {
-      event = (type === 'up') ? 'touchend' : 'mouseup';
+      event = (type === 'up') ? 'touchend' : 'touchstart';
     } else {
-      event = (type === 'down') ? 'touchstart' : 'mousedown';
+      event = (type === 'up') ? 'mouseup' : 'mousedown';
     }
 
     element.addEventListener(event, onClick);
