@@ -6,25 +6,26 @@ import { RelativePositionProps } from '../types/relative-position';
 export function useRelativePosition<T extends HTMLElement>({
   x,
   y,
+  camera,
 }: RelativePositionProps) {
-  const scene = useCurrentScene();
+  const currentScene = useCurrentScene();
+  const relativeCamera = camera ?? currentScene.cameras.main;
 
   const refElement = useRef<T>(null);
 
   useSceneUpdate(
-    scene,
+    currentScene,
     () => {
       if (!refElement.current) {
         return;
       }
 
-      const camera = scene.cameras.main;
-      const rx = Math.round((x - camera.worldView.x) * camera.zoom);
-      const ry = Math.round((y - camera.worldView.y) * camera.zoom);
+      const rx = Math.round((x - relativeCamera.worldView.x) * relativeCamera.zoom);
+      const ry = Math.round((y - relativeCamera.worldView.y) * relativeCamera.zoom);
 
       refElement.current.style.transform = `translate(${rx}px, ${ry}px)`;
     },
-    [x, y],
+    [x, y, relativeCamera],
   );
 
   return refElement;

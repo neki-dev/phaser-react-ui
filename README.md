@@ -83,6 +83,7 @@ useSceneUpdate(
 useRelativePosition(position: { 
   x: number, 
   y: number
+  camera?: Phaser.Cameras.Scene2D.Camera
 }): React.MutableRefObject<HTMLElement>
 ```
 
@@ -141,7 +142,7 @@ useClickOutside(
 
 #### Position relative to camera
 ```ts
-<RelativePosition x={number} y={number}>
+<RelativePosition x={number} y={number} camera={Phaser.Cameras.Scene2D.Camera?}>
   ...
 </RelativePosition>
 ```
