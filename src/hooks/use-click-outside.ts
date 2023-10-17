@@ -1,14 +1,14 @@
 import React, { useCallback, useEffect } from 'react';
 import { useMobilePlatform } from './use-mobile-platform';
 
-export function useOutsideClick(
+export function useClickOutside(
   ref: React.RefObject<HTMLElement>,
   callback: () => void,
   depends: any[],
 ) {
   const isMobile = useMobilePlatform();
 
-  const onClickOutside = useCallback(
+  const onClick = useCallback(
     (event: MouseEvent | TouchEvent) => {
       if (!ref.current) {
         return;
@@ -24,10 +24,12 @@ export function useOutsideClick(
   );
 
   useEffect(() => {
-    document.addEventListener(isMobile ? 'touchend' : 'click', onClickOutside);
+    const event = isMobile ? 'touchend' : 'mouseup';
+
+    document.addEventListener(event, onClick);
 
     return () => {
-      document.removeEventListener(isMobile ? 'touchend' : 'click', onClickOutside);
+      document.removeEventListener(event, onClick);
     };
-  }, [onClickOutside]);
+  }, [isMobile, onClick]);
 }

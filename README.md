@@ -116,9 +116,19 @@ useMatchMedia(
 useMobilePlatform(): boolean
 ```
 
-#### Add click event outside element
+#### Add adaptive click event for element
 ```ts
-useOutsideClick(
+useClick(
+  ref: React.RefObject,
+  type: 'up' | 'down',
+  callback: Function,
+  depends: any[]
+)
+```
+
+#### Add adaptive click event outside element
+```ts
+useClickOutside(
   ref: React.RefObject,
   callback: Function,
   depends: any[]
