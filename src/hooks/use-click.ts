@@ -20,6 +20,11 @@ export function useClick(
 
   useEffect(() => {
     const element = ref.current;
+
+    if (!element) {
+      return;
+    }
+
     let event: string;
 
     if (isMobile) {
