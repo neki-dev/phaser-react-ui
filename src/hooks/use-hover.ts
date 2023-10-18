@@ -1,20 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useMobilePlatform } from './use-mobile-platform';
 
 export function useHover(
   ref: React.RefObject<HTMLElement | Document>,
+  callback: (state: boolean, event: MouseEvent) => void,
+  depends: any[],
 ) {
   const isMobile = useMobilePlatform();
 
-  const [isActive, setActive] = useState(false);
+  const onMouseEnter = useCallback((event: MouseEvent) => {
+    callback(true, event);
+  }, depends);
 
-  const onMouseEnter = () => {
-    setActive(true);
-  };
-
-  const onMouseLeave = () => {
-    setActive(false);
-  };
+  const onMouseLeave = useCallback((event: MouseEvent) => {
+    callback(false, event);
+  }, depends);
 
   useEffect(() => {
     if (isMobile) {
@@ -34,7 +34,5 @@ export function useHover(
       element.removeEventListener('mouseenter', onMouseEnter);
       element.removeEventListener('mouseleave', onMouseLeave);
     };
-  }, [isMobile]);
-
-  return isActive;
+  }, [isMobile, onMouseEnter, onMouseLeave]);
 }
