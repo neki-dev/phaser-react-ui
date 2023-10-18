@@ -3,11 +3,11 @@
  * Use adaptive interaction flow.
  *
  * Desktop:
- * --[ mouse enter (activate) ] --> [ click (use) ] --> [ mouse leave (disactivate) ]
+ * * [ mouse enter = hover ] --> [ click = use ] --> [ mouse leave = unhover ]
  *
  * Mobile:
- * --[ click (activate) ] --> [ second click (use) ] --> [ auto disactivate ]
- * --[ click (activate) ] --> [ outside click (disactivate) ]
+ * * [ click = hover ] --> [ second click = use ] --> [ auto unhover ]
+ * * [ click = hover ] --> [ outside click = unhover ]
  *
  * @param ref - Target ref
  * @param callback - Event callback
