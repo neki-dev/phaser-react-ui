@@ -136,6 +136,11 @@ useClickOutside(
 )
 ```
 
+#### Get hover state for element
+```ts
+useHover(ref: React.RefObject): boolean
+```
+
 .
 
 ## Components
