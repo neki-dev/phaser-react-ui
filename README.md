@@ -136,15 +136,6 @@ useClickOutside(
 )
 ```
 
-#### Add hover event for element
-```ts
-useHover(
-  ref: React.RefObject,
-  callback: Function,
-  depends: any[]
-)
-```
-
 .
 
 ## Components
