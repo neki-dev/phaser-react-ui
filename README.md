@@ -136,6 +136,15 @@ useClickOutside(
 )
 ```
 
+#### Add adaptive interaction flow
+```ts
+useInteraction(
+  ref: React.RefObject,
+  callback?: Function,
+  depends?: any[]
+): boolean
+```
+
 .
 
 ## Components
