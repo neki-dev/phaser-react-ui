@@ -1,12 +1,17 @@
 import { useMemo } from 'react';
 import { useGame } from './use-game';
 
-export function useTexture(name: string) {
+/**
+ * Get texture source image.
+ *
+ * @param key - Texture key
+ */
+export function useTexture(key: string) {
   const game = useGame();
 
   return useMemo(() => {
-    const texture = game.textures.get(name);
+    const texture = game.textures.get(key);
 
     return texture.getSourceImage() as HTMLImageElement;
-  }, [name]);
+  }, [key]);
 }

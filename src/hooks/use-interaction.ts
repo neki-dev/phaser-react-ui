@@ -4,7 +4,7 @@ import { useClick } from './use-click';
 import { useClickOutside } from './use-click-outside';
 
 /**
- * Using adaptive interaction flow.
+ * Use adaptive interaction flow.
  *
  * Desktop:
  * --[ mouse enter (activate) ] --> [ click (use) ] --> [ mouse leave (disactivate) ]
@@ -12,6 +12,10 @@ import { useClickOutside } from './use-click-outside';
  * Mobile:
  * --[ click (activate) ] --> [ second click (use) ] --> [ auto disactivate ]
  * --[ click (activate) ] --> [ outside click (disactivate) ]
+ *
+ * @param ref - Target ref
+ * @param callback - Event callback
+ * @param depends - Callback dependencies
  */
 export function useInteraction(
   ref: React.RefObject<HTMLElement>,

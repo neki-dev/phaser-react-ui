@@ -2,6 +2,15 @@ import { useCallback, useEffect, useRef } from 'react';
 import { useGame } from './use-game';
 import { RelativeScaleProps } from '../types/relative-scale';
 
+/**
+ * Scale relative to canvas size.
+ *
+ * @param props
+ * @param props.target - Target value
+ * @param props.min - Min scale
+ * @param props.max - Max scale
+ * @param props.round - Rounding
+ */
 export function useRelativeScale<T extends HTMLElement>({
   target,
   min,

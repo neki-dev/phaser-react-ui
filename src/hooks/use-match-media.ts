@@ -1,5 +1,10 @@
 import { useEffect, useState } from 'react';
 
+/**
+ * Get actual media query result.
+ *
+ * @param query - Media query
+ */
 export function useMatchMedia(
   query: string,
 ) {

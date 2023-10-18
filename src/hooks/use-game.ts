@@ -2,6 +2,9 @@ import type Phaser from 'phaser';
 import { useContext } from 'react';
 import { SceneContext } from '../context/scene';
 
+/**
+ * Get game instance.
+ */
 export function useGame<T extends Phaser.Game>(): T {
   const scene = useContext(SceneContext);
 

@@ -1,6 +1,13 @@
 import React, { useCallback, useEffect } from 'react';
 import { useMobilePlatform } from './use-mobile-platform';
 
+/**
+ * Use adaptive click event outside target element.
+ *
+ * @param ref - Target ref
+ * @param callback - Event callback
+ * @param depends - Callback dependencies
+ */
 export function useClickOutside(
   ref: React.RefObject<HTMLElement>,
   callback: () => void,

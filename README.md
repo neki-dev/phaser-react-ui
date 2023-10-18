@@ -54,12 +54,12 @@ ui.destroy()
 .
 
 ## Hooks
-#### Get game in component
+#### Get game instance
 ```ts
 useGame(): Phaser.Game
 ```
 
-#### Get scene in component
+#### Get scene
   * Get scene in which interface was created
 ```ts
 useCurrentScene(): Phaser.Game
@@ -97,27 +97,22 @@ useRelativeScale(params: {
 }): React.MutableRefObject<HTMLElement>
 ```
 
-#### Get source texture image
+#### Get texture source image
 ```ts
-useTexture(params: {
-  name: string, 
-  frame?: string | number
-}): HTMLImageElement
+useTexture(key: string): HTMLImageElement
 ```
 
 #### Get actual media query result
 ```ts
-useMatchMedia(
-  query: string
-): boolean
+useMatchMedia(query: string): boolean
 ```
 
-#### Check platform is mobile
+#### Check if platform is mobile
 ```ts
 useMobilePlatform(): boolean
 ```
 
-#### Add adaptive click event for element
+#### Use adaptive click event on target element
 ```ts
 useClick(
   ref: React.RefObject,
@@ -127,7 +122,7 @@ useClick(
 )
 ```
 
-#### Add adaptive click event outside element
+#### Use adaptive click event outside target element
 ```ts
 useClickOutside(
   ref: React.RefObject,
@@ -136,7 +131,7 @@ useClickOutside(
 )
 ```
 
-#### Add adaptive interaction flow
+#### Use adaptive interaction flow
 ```ts
 useInteraction(
   ref: React.RefObject,
