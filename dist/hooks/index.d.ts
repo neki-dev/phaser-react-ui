@@ -9,4 +9,5 @@ export * from './use-match-media';
 export * from './use-mobile-platform';
 export * from './use-click';
 export * from './use-click-outside';
+export * from './use-event';
 export * from './use-interaction';

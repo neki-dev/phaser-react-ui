@@ -78,6 +78,16 @@ useSceneUpdate(
 )
 ```
 
+#### Subscribe to event
+```ts
+useEvent(
+  emitter: Phaser.Scene | Phaser.GameObject, 
+  event: string,
+  callback: () => void, 
+  depends: any[]
+)
+```
+
 #### Position relative to camera
 ```ts
 useRelativePosition(position: { 
