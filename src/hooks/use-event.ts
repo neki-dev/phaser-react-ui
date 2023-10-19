@@ -1,4 +1,4 @@
-import EventEmitter from 'events';
+import type Phaser from 'phaser';
 import { useEffect } from 'react';
 
 /**
@@ -10,9 +10,9 @@ import { useEffect } from 'react';
  * @param depends - Callback dependencies
  */
 export function useEvent(
-  emitter: EventEmitter,
+  emitter: Phaser.Events.EventEmitter,
   event: string,
-  callback: () => void,
+  callback: (...args: any[]) => void,
   depends: any[],
 ) {
   useEffect(() => {

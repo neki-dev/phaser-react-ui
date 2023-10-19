@@ -81,7 +81,7 @@ useSceneUpdate(
 #### Subscribe to event
 ```ts
 useEvent(
-  emitter: Phaser.Scene | Phaser.GameObject, 
+  emitter: Phaser.Events.EventEmitter, 
   event: string,
   callback: () => void, 
   depends: any[]

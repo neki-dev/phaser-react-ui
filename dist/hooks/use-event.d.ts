@@ -1,5 +1,4 @@
-/// <reference types="node" />
-import EventEmitter from 'events';
+import type Phaser from 'phaser';
 /**
  * Subscribe to event.
  *
@@ -8,4 +7,4 @@ import EventEmitter from 'events';
  * @param callback - Event callback
  * @param depends - Callback dependencies
  */
-export declare function useEvent(emitter: EventEmitter, event: string, callback: () => void, depends: any[]): void;
+export declare function useEvent(emitter: Phaser.Events.EventEmitter, event: string, callback: (...args: any[]) => void, depends: any[]): void;
