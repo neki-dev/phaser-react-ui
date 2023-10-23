@@ -170,7 +170,7 @@ useInteraction(
 
 #### Render texture image
 ```ts
-<Texture name={string} frame={string? | number?} />
+<Texture name={string} clone={boolean?} />
 ```
 
 .

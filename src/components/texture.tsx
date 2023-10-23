@@ -3,15 +3,18 @@ import { useTexture } from '../hooks';
 
 type Props = {
   name: string
+  clone?: boolean
 };
 
-export const Texture: React.FC<Props> = ({ name }) => {
+export const Texture: React.FC<Props> = ({ name, clone }) => {
   const image = useTexture(name);
 
   const ref = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
-    ref.current.appendChild(image);
+    const element = clone ? image.cloneNode() : image;
+
+    ref.current.appendChild(element);
   }, []);
 
   return <div ref={ref} data-texture-container />;
