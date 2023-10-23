@@ -1,21 +1,13 @@
-import React, { useRef, useLayoutEffect } from 'react';
+/* eslint-disable jsx-a11y/aria-role */
+import React from 'react';
 import { useTexture } from '../hooks';
 
 type Props = {
   name: string
-  clone?: boolean
 };
 
-export const Texture: React.FC<Props> = ({ name, clone }) => {
-  const image = useTexture(name);
+export const Texture: React.FC<Props> = ({ name }) => {
+  const imageSrc = useTexture(name);
 
-  const ref = useRef<HTMLDivElement>(null);
-
-  useLayoutEffect(() => {
-    const element = clone ? image.cloneNode() : image;
-
-    ref.current.appendChild(element);
-  }, []);
-
-  return <div ref={ref} data-texture-container />;
+  return <img src={imageSrc} role="texture" alt={name} />;
 };

@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import { useGame } from './use-game';
+import { HTMLTextureElement } from '../types/texture';
 
 /**
  * Get texture source image.
@@ -11,7 +12,8 @@ export function useTexture(key: string) {
 
   return useMemo(() => {
     const texture = game.textures.get(key);
+    const image = texture.getSourceImage() as HTMLTextureElement;
 
-    return texture.getSourceImage() as HTMLImageElement;
+    return URL.createObjectURL(image.originBlob);
   }, [key]);
 }

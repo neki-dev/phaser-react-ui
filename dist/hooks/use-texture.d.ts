@@ -3,4 +3,4 @@
  *
  * @param key - Texture key
  */
-export declare function useTexture(key: string): HTMLImageElement;
+export declare function useTexture(key: string): string;
