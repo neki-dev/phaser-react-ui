@@ -62,11 +62,11 @@ useGame(): Phaser.Game
 #### Get scene
   * Get scene in which interface was created
 ```ts
-useCurrentScene(): Phaser.Game
+useCurrentScene(): Phaser.Scene
 ```
   * Get scene by key
 ```ts
-useScene(key: string): Phaser.Game
+useScene(key: string): Phaser.Scene
 ```
 
 #### Subscribe to scene update
@@ -90,9 +90,9 @@ useEvent(
 
 #### Position relative to camera
 ```ts
-useRelativePosition(position: { 
-  x: number, 
-  y: number
+useRelativePosition(params: { 
+  x: number,
+  y: number,
   camera?: Phaser.Cameras.Scene2D.Camera
 }): React.MutableRefObject<HTMLElement>
 ```
@@ -156,14 +156,23 @@ useInteraction(
 
 #### Position relative to camera
 ```ts
-<RelativePosition x={number} y={number} camera={Phaser.Cameras.Scene2D.Camera?}>
+<RelativePosition 
+  x={number} 
+  y={number} 
+  camera={Phaser.Cameras.Scene2D.Camera?}
+>
   ...
 </RelativePosition>
 ```
 
 #### Scale relative to canvas size
 ```ts
-<RelativeScale target={number} min={number?} max={number?} round={boolean?}>
+<RelativeScale 
+  target={number} 
+  min={number?} 
+  max={number?} 
+  round={boolean?}
+>
   ...
 </RelativeScale>
 ```
@@ -208,17 +217,25 @@ const Component: React.FC = () => {
 
 #### Create interface component
 ```ts
-import { useScene, useSceneUpdate } from 'phaser-react-ui';
+import { useScene, useSceneUpdate, useEvent } from 'phaser-react-ui';
 
 const PlayerHealth: React.FC = () => {
   const world = useScene('world');
+
   const [health, setHealth] = useState(0);
+  const [isAlive, setAlive] = useState(true);
 
   useSceneUpdate(world, () => {
-    setHealth(world.player.health);
+    if (isAlive) {
+      setHealth(world.player.health);
+    }
+  }, [isAlive]);
+
+  useEvent(world.player, Phaser.GameObjects.Events.DESTROY, () => {
+    setAlive(false);
   }, []);
 
-  return (
+  return isAlive && (
     <div className='info'>
       {health} HP
     </div>
