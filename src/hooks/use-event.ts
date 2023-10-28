@@ -10,16 +10,20 @@ import { useEffect } from 'react';
  * @param depends - Callback dependencies
  */
 export function useEvent(
-  emitter: Phaser.Events.EventEmitter,
+  emitter: Phaser.Events.EventEmitter | null,
   event: string,
   callback: (...args: any[]) => void,
   depends: any[],
 ) {
   useEffect(() => {
+    if (!emitter) {
+      return;
+    }
+
     emitter.on(event, callback);
 
     return () => {
       emitter.off(event, callback);
     };
-  }, [event, ...depends]);
+  }, [emitter, event, ...depends]);
 }

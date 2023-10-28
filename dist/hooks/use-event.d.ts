@@ -7,4 +7,4 @@ import type Phaser from 'phaser';
  * @param callback - Event callback
  * @param depends - Callback dependencies
  */
-export declare function useEvent(emitter: Phaser.Events.EventEmitter, event: string, callback: (...args: any[]) => void, depends: any[]): void;
+export declare function useEvent(emitter: Phaser.Events.EventEmitter | null, event: string, callback: (...args: any[]) => void, depends: any[]): void;
