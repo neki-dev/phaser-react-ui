@@ -14,6 +14,8 @@ export function useTexture(key: string) {
     const texture = game.textures.get(key);
     const image = texture.getSourceImage() as HTMLTextureElement;
 
-    return URL.createObjectURL(image.originBlob);
+    return image.originBlob
+      ? URL.createObjectURL(image.originBlob)
+      : null;
   }, [key]);
 }
