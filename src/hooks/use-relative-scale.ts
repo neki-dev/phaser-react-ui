@@ -27,6 +27,11 @@ export function useRelativeScale<T extends HTMLElement>({
     }
 
     const container = game.canvas.parentElement;
+
+    if (!container) {
+      return;
+    }
+
     let zoom = container.clientWidth / target;
 
     if (typeof max === 'number') {

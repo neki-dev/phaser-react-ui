@@ -9,4 +9,4 @@ import { RelativeScaleProps } from '../types/relative-scale';
  * @param props.max - Max scale
  * @param props.round - Rounding
  */
-export declare function useRelativeScale<T extends HTMLElement>({ target, min, max, round, }: RelativeScaleProps): import("react").MutableRefObject<T>;
+export declare function useRelativeScale<T extends HTMLElement>({ target, min, max, round, }: RelativeScaleProps): import("react").RefObject<T>;

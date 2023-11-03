@@ -3,4 +3,4 @@
  *
  * @param query - Media query
  */
-export declare function useMatchMedia(query: string): any;
+export declare function useMatchMedia(query: string): boolean | null;

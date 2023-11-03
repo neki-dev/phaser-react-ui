@@ -5,7 +5,7 @@
  * @param target - New array
  * @param keys - Keys to compare
  */
-export function getModifiedArray<T>(
+export function getModifiedArray<T extends {}>(
   current: T[],
   target: T[],
   keys?: (keyof T)[],
@@ -13,6 +13,7 @@ export function getModifiedArray<T>(
   if (!target) {
     return current;
   }
+
   if (!current) {
     return target;
   }
@@ -40,7 +41,7 @@ export function getModifiedArray<T>(
  * @param target - New array
  * @param keys - Keys to compare
  */
-export function ifModifiedArray<T>(value: T[], keys?: (keyof T)[]) {
+export function ifModifiedArray<T extends {}>(value: T[], keys?: (keyof T)[]) {
   return (currentValue: T[]) => getModifiedArray(currentValue, value, keys);
 }
 
@@ -51,7 +52,7 @@ export function ifModifiedArray<T>(value: T[], keys?: (keyof T)[]) {
  * @param target - New object
  * @param keys - Keys to compare
  */
-export function getModifiedObject<T>(
+export function getModifiedObject<T extends {}>(
   current: T,
   target: T,
   keys?: (keyof T)[],
@@ -59,6 +60,7 @@ export function getModifiedObject<T>(
   if (!target) {
     return current;
   }
+
   if (!current) {
     return target;
   }
@@ -80,6 +82,6 @@ export function getModifiedObject<T>(
  * @param target - New object
  * @param keys - Keys to compare
  */
-export function ifModifiedObject<T>(value: T, keys?: (keyof T)[]) {
+export function ifModifiedObject<T extends {}>(value: T, keys?: (keyof T)[]) {
   return (currentValue: T) => getModifiedObject(currentValue, value, keys);
 }

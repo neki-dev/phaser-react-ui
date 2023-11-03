@@ -11,7 +11,13 @@ export class Interface<T = {}> {
 
   readonly scene: Phaser.Scene;
 
-  constructor(scene: Phaser.Scene, Component: React.FC<T>, props?: T) {
+  constructor(scene: Phaser.Scene, Component: React.FC<T | {}>, props?: T) {
+    const parent = scene.game.canvas.parentElement;
+
+    if (!parent) {
+      throw Error('Undefined canvas parent element');
+    }
+
     if (scene.interface) {
       console.warn('Scene already had an existing interface');
       scene.interface.destroy();
@@ -25,23 +31,21 @@ export class Interface<T = {}> {
     this.configureContainer();
     this.setInteractive(false);
 
-    const parent = scene.game.canvas.parentElement;
-
     parent.style.position = 'relative';
     parent.append(this.container);
 
-    const ComponentMiddleware: React.FC<T> = (propsMiddleware: T) => {
+    const ComponentMiddleware: React.FC = () => {
       useEffect(() => {
         scene.events.emit(Phaser.Interface.Events.MOUNT);
       }, []);
 
-      return <Component {...propsMiddleware} />;
+      return <Component {...(props ?? {})} />;
     };
 
     this.root = createRoot(this.container);
     this.root.render(
       <SceneProvider value={scene}>
-        <ComponentMiddleware {...props} />
+        <ComponentMiddleware />
       </SceneProvider>,
     );
 

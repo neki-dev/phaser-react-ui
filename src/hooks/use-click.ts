@@ -38,9 +38,11 @@ export function useClick(
       event = (type === 'up') ? 'mouseup' : 'mousedown';
     }
 
+    // @ts-ignore
     element.addEventListener(event, onClick);
 
     return () => {
+      // @ts-ignore
       element.removeEventListener(event, onClick);
     };
   }, [type, isMobile, onClick]);

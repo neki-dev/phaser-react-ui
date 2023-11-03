@@ -9,5 +9,5 @@ type Props = {
 export const Texture: React.FC<Props> = ({ name }) => {
   const imageSrc = useTexture(name);
 
-  return <img src={imageSrc} role="texture" alt={name} />;
+  return imageSrc ? <img src={imageSrc} role="texture" alt={name} /> : null;
 };

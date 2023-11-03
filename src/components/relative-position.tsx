@@ -10,7 +10,9 @@ export const RelativePosition: React.FC<Props> = ({ children, ...props }) => {
   const ref = useRelativePosition<HTMLDivElement>(props);
 
   useLayoutEffect(() => {
-    ref.current.style.position = 'absolute';
+    if (ref.current) {
+      ref.current.style.position = 'absolute';
+    }
   }, []);
 
   return <div ref={ref}>{children}</div>;

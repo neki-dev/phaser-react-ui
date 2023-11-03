@@ -3,4 +3,4 @@
  *
  * @param key - Texture key
  */
-export declare function useTexture(key: string): string;
+export declare function useTexture(key: string): string | null;

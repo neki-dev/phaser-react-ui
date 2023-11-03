@@ -7,7 +7,7 @@ import { HTMLTextureElement } from '../types/texture';
  *
  * @param key - Texture key
  */
-export function useTexture(key: string) {
+export function useTexture(key: string): string | null {
   const game = useGame();
 
   return useMemo(() => {
