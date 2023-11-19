@@ -4,14 +4,14 @@ import { Root, createRoot } from 'react-dom/client';
 
 import { SceneProvider } from './context/scene';
 
-export class Interface<T = {}> {
+export class Interface {
   readonly container: HTMLDivElement;
 
   readonly root: Root;
 
   readonly scene: Phaser.Scene;
 
-  constructor(scene: Phaser.Scene, Component: React.FC<T | {}>, props?: T) {
+  constructor(scene: Phaser.Scene) {
     const parent = scene.game.canvas.parentElement;
 
     if (!parent) {
@@ -24,33 +24,15 @@ export class Interface<T = {}> {
     }
 
     this.container = document.createElement('div');
-    if (Component.displayName) {
-      this.container.setAttribute('data-component', Component.displayName);
-    }
+    this.root = createRoot(this.container);
+    this.scene = scene;
+    this.scene.interface = this;
 
     this.configureContainer();
     this.setInteractive(false);
 
     parent.style.position = 'relative';
     parent.append(this.container);
-
-    const ComponentMiddleware: React.FC = () => {
-      useEffect(() => {
-        scene.events.emit(Phaser.Interface.Events.MOUNT);
-      }, []);
-
-      return <Component {...(props ?? {})} />;
-    };
-
-    this.root = createRoot(this.container);
-    this.root.render(
-      <SceneProvider value={scene}>
-        <ComponentMiddleware />
-      </SceneProvider>,
-    );
-
-    this.scene = scene;
-    this.scene.interface = this;
 
     this.scene.events.on('shutdown', () => {
       this.destroy();
@@ -60,6 +42,29 @@ export class Interface<T = {}> {
   public setInteractive(state: boolean) {
     this.container.style.pointerEvents = state ? 'all' : 'none';
     this.container.style.userSelect = state ? 'all' : 'none';
+  }
+
+  // @ts-ignore
+  public render<P extends {}>(Component: React.FC<P>, props: P = {}) {
+    const { scene } = this;
+
+    if (Component.displayName) {
+      this.container.setAttribute('data-component', Component.displayName);
+    }
+
+    const Middleware: React.FC = () => {
+      useEffect(() => {
+        scene.events.emit(Phaser.Interface.Events.MOUNT);
+      }, []);
+
+      return <Component {...props} />;
+    };
+
+    this.root.render(
+      <SceneProvider value={scene}>
+        <Middleware />
+      </SceneProvider>,
+    );
   }
 
   public destroy() {

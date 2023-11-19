@@ -22,20 +22,24 @@ npm i phaser-react-ui
 ## Interface integration
 #### Add interface to scene
 ```ts
-const ui = new Interface(
-  scene: Phaser.Scene, 
+const ui = new Interface(scene: Phaser.Scene)
+
+console.log(ui.container) // HTMLDivElement
+```
+
+#### Interface render
+```ts
+ui.render(
   component: React.FC, 
   props?: object
-);
-
-console.log(ui.container); // HTMLDivElement
+)
 ```
 
 #### Interface events
 ```ts
 scene.events.on(Phaser.Interface.Events.MOUNT, () => {
   console.log('component mounted');
-});
+})
 ```
 
 #### Toggle interface interactive
@@ -275,7 +279,8 @@ class Screen extends Phaser.Scene {
   private ui: Interface;
 
   create() {
-    this.ui = new Interface(this, ScreenUI);
+    this.ui = new Interface(this);
+    this.ui.render(ScreenUI);
   }
 }
 ```

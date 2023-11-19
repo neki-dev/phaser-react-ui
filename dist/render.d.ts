@@ -1,12 +1,13 @@
 import Phaser from 'phaser';
 import React from 'react';
 import { Root } from 'react-dom/client';
-export declare class Interface<T = {}> {
+export declare class Interface {
     readonly container: HTMLDivElement;
     readonly root: Root;
     readonly scene: Phaser.Scene;
-    constructor(scene: Phaser.Scene, Component: React.FC<T | {}>, props?: T);
+    constructor(scene: Phaser.Scene);
     setInteractive(state: boolean): void;
+    render<P extends {}>(Component: React.FC<P>, props?: P): void;
     destroy(): void;
     private configureContainer;
 }
