@@ -11,15 +11,25 @@ For each scene can be create one interface instance, which is container for all 
 
 .
 
-* ### Install
+Documentation
+
+* [Install](https://github.com/neki-dev/phaser-react-ui?tab=readme-ov-file#install)
+* [Integration](https://github.com/neki-dev/phaser-react-ui?tab=readme-ov-file#integration)
+* [Hooks](https://github.com/neki-dev/phaser-react-ui?tab=readme-ov-file#hooks)
+* [Components](https://github.com/neki-dev/phaser-react-ui?tab=readme-ov-file#components)
+* [Utils](https://github.com/neki-dev/phaser-react-ui?tab=readme-ov-file#utils)
+* [Example](https://github.com/neki-dev/phaser-react-ui?tab=readme-ov-file#example)
+
+.
+
+
+## Install
 
 ```sh
 npm i phaser-react-ui
 ```
 
-.
-
-## Interface integration
+## Integration
 #### Add interface to scene
 ```ts
 const ui = new Interface(scene: Phaser.Scene)
@@ -157,7 +167,6 @@ useInteraction(
 .
 
 ## Components
-
 #### Position relative to camera
 ```ts
 <RelativePosition 
@@ -217,8 +226,7 @@ const Component: React.FC = () => {
 
 .
 
-## Full example
-
+## Example
 #### Create interface component
 ```ts
 import { useScene, useSceneUpdate, useEvent } from 'phaser-react-ui';
