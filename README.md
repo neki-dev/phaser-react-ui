@@ -29,6 +29,8 @@ Documentation
 npm i phaser-react-ui
 ```
 
+.
+
 ## Integration
 #### Add interface to scene
 ```ts
@@ -165,6 +167,7 @@ useInteraction(
 ```
 
 .
+
 
 ## Components
 #### Position relative to camera
