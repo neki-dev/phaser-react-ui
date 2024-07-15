@@ -1,7 +1,7 @@
 {
   "name": "phaser-react-ui",
   "description": "React interface render for Phaser engine",
-  "version": "1.15.1",
+  "version": "1.15.2",
   "keywords": [
     "phaser",
     "interface",
@@ -21,6 +21,11 @@
   "scripts": {
     "build": "webpack --mode production",
     "lint": "eslint \"./src/**/*.{ts,tsx}\" --ignore-path .gitignore --fix"
+  },
+  "peerDependencies": {
+    "phaser": "^3.60.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@babel/core": "7.23.6",
