@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import React, { useEffect } from 'react';
-import { Root, createRoot } from 'react-dom/client';
+import type { Root } from 'react-dom/client';
+import { createRoot } from 'react-dom/client';
 
 import { SceneProvider } from './context/scene';
 

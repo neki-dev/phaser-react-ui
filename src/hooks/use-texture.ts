@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { useGame } from './use-game';
-import { HTMLTextureElement } from '../types/texture';
+import type { HTMLTextureElement } from '../types/texture';
 
 /**
  * Get texture source image.

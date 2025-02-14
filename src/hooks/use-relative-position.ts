@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { useCurrentScene } from './use-current-scene';
 import { useSceneUpdate } from './use-scene-update';
-import { RelativePositionProps } from '../types/relative-position';
+import type { RelativePositionProps } from '../types/relative-position';
 
 /**
  * Position relative to camera.

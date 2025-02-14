@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef } from 'react';
 import { useGame } from './use-game';
-import { RelativeScaleProps } from '../types/relative-scale';
+import type { RelativeScaleProps } from '../types/relative-scale';
 
 /**
  * Scale relative to canvas size.

@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import { HTMLTextureElement } from './types/texture';
+import type { HTMLTextureElement } from './types/texture';
 
 const defaultFunction = Phaser.Loader.File.createObjectURL;
 
