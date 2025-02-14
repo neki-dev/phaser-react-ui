@@ -1,5 +1,5 @@
 import React from 'react';
-import { RelativeScaleProps } from '../types/relative-scale';
+import type { RelativeScaleProps } from '../types/relative-scale';
 type Props = RelativeScaleProps & {
     children: React.ReactNode;
 };

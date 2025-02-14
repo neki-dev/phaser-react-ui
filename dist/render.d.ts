@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 import React from 'react';
-import { Root } from 'react-dom/client';
+import type { Root } from 'react-dom/client';
 export declare class Interface {
     readonly container: HTMLDivElement;
     readonly root: Root;

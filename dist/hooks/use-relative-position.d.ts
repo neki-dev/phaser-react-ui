@@ -1,5 +1,5 @@
 /// <reference types="react" />
-import { RelativePositionProps } from '../types/relative-position';
+import type { RelativePositionProps } from '../types/relative-position';
 /**
  * Position relative to camera.
  *

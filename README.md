@@ -104,6 +104,15 @@ useEvent(
 )
 ```
 
+#### Get actual value from event
+```ts
+useEventValue(
+  emitter: Phaser.Events.EventEmitter, 
+  event: string,
+  defaultValue: T
+)
+```
+
 #### Position relative to camera
 ```ts
 useRelativePosition(params: { 

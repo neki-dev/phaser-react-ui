@@ -1,5 +1,5 @@
 import React from 'react';
-import { RelativePositionProps } from '../types/relative-position';
+import type { RelativePositionProps } from '../types/relative-position';
 type Props = RelativePositionProps & {
     children: React.ReactNode;
 };
